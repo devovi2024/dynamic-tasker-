@@ -37,14 +37,23 @@ async function addCategory() {
 async function addTask() {
     const taskName = document.getElementById("task-input").value;
     const taskCategory = document.getElementById("task-category").value;
-    if (!taskName || !taskCategory) return;
-    await fetch('http://localhost:4800/tasks', {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: Date.now(), name: taskName, category: taskCategory })
-    });
-    fetchTasks();
+    if (!taskName || !taskCategory) return alert("Task name and category are required!");
+
+    try {
+        const response = await fetch("http://localhost:4800/tasks", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id: Date.now(), name: taskName, category: taskCategory }),
+        });
+
+        if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
+        
+        fetchTasks();
+    } catch (error) {
+        console.error("Error adding task:", error);
+    }
 }
+
 
 fetchCategories();
 fetchTasks();
