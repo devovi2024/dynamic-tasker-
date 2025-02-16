@@ -1,6 +1,6 @@
 
 async function fetchCategories() {
-    const res = await fetch('http://localhost:3000/categories');
+    const res = await fetch('http://localhost:4800/categories');
     const categories = await res.json();
     const list = document.getElementById("category-list");
     list.innerHTML = "";
@@ -12,7 +12,7 @@ async function fetchCategories() {
 }
 
 async function fetchTasks() {
-    const res = await fetch('http://localhost:3000/tasks');
+    const res = await fetch('http://localhost:4800/tasks');
     const tasks = await res.json();
     const list = document.getElementById("task-list");
     list.innerHTML = "";
@@ -26,7 +26,7 @@ async function fetchTasks() {
 async function addCategory() {
     const categoryName = document.getElementById("category-input").value;
     if (!categoryName) return;
-    await fetch('http://localhost:3000/categories', {
+    await fetch('http://localhost:4800/categories', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: Date.now(), name: categoryName })
@@ -38,7 +38,7 @@ async function addTask() {
     const taskName = document.getElementById("task-input").value;
     const taskCategory = document.getElementById("task-category").value;
     if (!taskName || !taskCategory) return;
-    await fetch('http://localhost:3000/tasks', {
+    await fetch('http://localhost:4800/tasks', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: Date.now(), name: taskName, category: taskCategory })

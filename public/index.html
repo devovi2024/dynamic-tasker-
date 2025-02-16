@@ -8,13 +8,17 @@
 <body>
     <h1>Task Manager</h1>
 
+    <h2>Categories</h2>
+    <ul id="category-list"></ul>
+    <input type="text" id="category-input" placeholder="Add Category">
+    <button onclick="addCategory()">Add Category</button>
+
     <h2>Tasks</h2>
     <ul id="task-list"></ul>
     <input type="text" id="task-input" placeholder="Add Task">
     <input type="text" id="task-category" placeholder="Task Category">
     <button onclick="addTask()">Add Task</button>
 
-
-    <script src="/server/index.js"></script>
+  <script src="/server/index.js"></script>
 </body>
 </html>
